@@ -1,0 +1,69 @@
+db:
+  username: ${username.value:postgres}
+  password: pass
+  driver: PostgresDriver
+  url: postgres:5432
+  hosts: localhost,127.0.0.1
+  properties:
+    first: 123
+    second: 567
+    third.value: Third
+  pool:
+    size: 12
+    timeout: 10
+  pools:
+    - size: 1
+      timeout: 1
+    - size: 2
+      timeout: 2
+    - size: 3
+      timeout: 3
+
+spring.profiles.active: qa
+
+#spring.mvc.view.prefix and suffix указвыает какие view будем возращать из контроллеров
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+    format:
+      date: iso
+  datasource:
+    url: jdbc:postgresql://localhost:5433/postgres
+    username: postgres
+    password: 647881
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        hbm2ddl.auto: validate
+        jdbc:
+          batch_size: 50
+          fetch_size:
+    open-in-view: false #Транзакции на уровне контроллеров открываться не будут
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          google:
+#            clientId:
+#            clientSecret:
+#            redirectUri:
+
+#
+#logging:
+#  level:
+#    root: INFO
+#
+#  file:
+#    name: andrey.log
+#    path: /
+logging:
+  level:
+    root: info
+    org.springframework.jdbc.core: trace
+
